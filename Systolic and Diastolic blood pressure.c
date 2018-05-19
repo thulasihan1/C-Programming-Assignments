@@ -16,7 +16,7 @@ int main(void)
 		fscanf(in,"%d %d",&s,&d); /* Reading the systolic pressure first then the diastolic pressure from the file */
 		if(s>140 || d>190)        /* Ranges of systolic and diastolic pressures */
 		{
-			prinf("WARNING!\n");   /*A Warning will appear if the systolic or diastolic pressure value is beyod their range */
+			printf("WARNING!\n");   /*A Warning will appear if the systolic or diastolic pressure value is beyod their range */
 								}
 								
 										}

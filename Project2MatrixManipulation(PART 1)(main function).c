@@ -12,7 +12,7 @@ functions (see below). A typical file will look like this:
 The file will never be larger than 200 rows and 200 columns and never be smaller than 2
 rows and 2 columns. */
 
-#include<stdio.h>   /* This program is only the main function only other functions will come in seprate parts*/
+#include<stdio.h>   /* This program is only the main function only other functions will come in seprate parts(other function have to also be treaded as global variables as well in case)*/
 #include<math.h>
 int main(void)
 {							/*array[][] is the values within the matrix*/
@@ -29,6 +29,7 @@ int main(void)
 		for(j=0;j<c;j++)			/*nested for loop statements allow the program to read every single value within the matrix*/
 		{
 			fscanf(in, "%lf",&array[i][j]);
+								}
 											}
 											
 											

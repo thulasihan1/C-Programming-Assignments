@@ -12,7 +12,7 @@ double sumborders(double array[][200], int r,int c) /* the values of the matrix,
 	int i,j;
 	double sum=0;
 	for(i=0;i<r;i++)       /* A series of if statements and for loops are presented within the function of this program, inorder to calculate the borders without
-							any overlaping wihin the corners,*/
+	{						any overlaping wihin the corners*/
 							/* take addition of the first and last row then take the addition of the numbers of the first and last columns within the domain of first and last rows*/
 		if(i==0||i=r-1)
 		{

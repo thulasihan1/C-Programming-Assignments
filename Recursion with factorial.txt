@@ -1,0 +1,19 @@
+/* Recursion:A function calling itself*/
+/* CALCULATE FACTORIAL OF AN INTEGER 
+    NUMBER USING RECURSIVE FUNCTION   */
+#include <stdio.h>
+int factorial(int num);
+main( ){
+	int var, result;
+	printf("Enter a number: ");
+	scanf("%d",&var);
+	result=factorial(var);
+	printf("\n%d! equals %5d", var, result);
+}
+/* Recursive function gets an integer number,
+     calls itself until num gets 0 ,returns the result  */
+int factorial(int num){
+	if (num == 0)
+		return 1;
+	else
+		return num * factorial(num - 1);

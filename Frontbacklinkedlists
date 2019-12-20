@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+
+typedef struct Node{
+    int value;
+    struct Node*next;
+    
+} lol;
+
+lol *start;
+
+lol* insert(lol*start,int x)
+{
+    lol*temp= (lol*)malloc(sizeof(struct Node));
+    temp ->value= x;
+    temp ->next=start;
+    start= temp;
+    return(start);
+    
+    
+}
+
+lol*back(lol*start,int x){
+    lol*temp= (lol*)malloc(sizeof(struct Node));
+    temp ->value= x;
+    temp->next= NULL;
+    if(start==NULL)
+    {
+        start=temp;
+        return(start);
+    }
+    lol*track=start;
+    while(track->next!=NULL){
+        track=track->next;
+    }
+    track->next=temp;
+    return(start);
+}
+
+
+
+    void print( lol*start){
+       lol*track;
+       track=start;
+        while(track!=NULL)
+        {
+            printf(" %d ",track->value);
+            track= track->next;
+            
+        }
+        }
+        
+        
+   
+        
+ 
+    
+
+
+int main(void)
+{
+    int n,i,x;
+    int choice;
+    start= NULL;
+ 
+    printf("How many nodes?\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("\nValue?\n");
+        scanf("%d",&x);
+        printf("\nChoice front or back?\n");
+        scanf("%d",&choice);
+        if(choice==1)
+        {
+        start= insert(start,x);
+        print(start);
+        }
+        else
+        if(choice==0)
+        {
+            start= back(start,x);
+            print(start);
+            
+        }
+    }
+    
+
+    return (0);
+}

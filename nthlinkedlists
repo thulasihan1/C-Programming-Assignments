@@ -38,24 +38,6 @@ lol* insert(int choice,int x)
     
 }
 
-lol*back(lol*start,int x){
-    lol*temp= (lol*)malloc(sizeof(struct Node));
-    temp ->value= x;
-    temp->next= NULL;
-    if(start==NULL)
-    {
-        start=temp;
-        return(start);
-    }
-    lol*track=start;
-    while(track->next!=NULL){
-        track=track->next;
-    }
-    track->next=temp;
-    return(start);
-}
-
-
 
     void print( lol*start){
        lol*track;
@@ -67,10 +49,7 @@ lol*back(lol*start,int x){
             
         }
         }
-        
-        
-   
-     
+           
 
 int main(void)
 {

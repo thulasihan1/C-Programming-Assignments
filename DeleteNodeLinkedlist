@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+
+typedef struct Node{
+    int value;
+    struct Node*next;
+    
+} lol;
+
+lol *start;
+
+lol* insert(int choice,int x)
+{
+    int i;
+    lol*temp= (lol*)malloc(sizeof(struct Node));
+    temp ->value= x;
+    temp ->next=start;
+    if(choice==1)
+    {
+    start= temp;
+    return(start);
+    }
+    else
+    if(choice!=1){
+        lol*track;
+        track=start;
+        for(i=1;i<(choice-1);i++)
+        {
+            track= track->next;
+        }
+        temp->next=track->next;
+        track->next= temp;
+        return(start);   
+    }
+    
+    
+}
+    void delete(int choice)
+    {
+            lol*track;
+            track=start;
+            if(choice==1)
+            {
+                start= track->next;
+                free(track);
+            }
+            
+            else
+            if(choice!=1)
+            {
+                int i;
+                for(i=1;i<(choice-1);i++)
+                {
+                    track= track->next;
+                }
+                lol*track1;
+                track1=track->next;
+                track->next= track1->next;
+                free(track1);
+            }
+    }
+
+
+    void print( lol*start){
+       lol*track;
+       track=start;
+        while(track!=NULL)
+        {
+            printf(" %d ",track->value);
+            track= track->next;
+            
+        }
+        }
+           
+
+int main(void)
+{
+    int n,i,x;
+    int choice;
+    start= NULL;
+ 
+    printf("How many nodes?\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("\nValue?\n");
+        scanf("%d",&x);
+        printf("\nChoice position?\n");
+        scanf("%d",&choice);
+   
+        start= insert(choice,x);
+        print(start);
+      
+            
+    
+    }
+    printf("Which node to delete?\n");
+    int p;
+    scanf("%d",&p);
+    
+    delete(p);
+    print(start);
+    
+
+    return (0);
+}

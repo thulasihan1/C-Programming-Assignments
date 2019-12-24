@@ -1,1 +1,81 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
 
+typedef struct Node{
+    int value;
+    struct Node*next;
+    
+} lol;
+
+lol *start;
+
+lol* push(lol*start,int x)
+{
+    lol*temp= (lol*)malloc(sizeof(struct Node));
+    temp ->value= x;
+    temp ->next=start;
+    start= temp;
+    return(start);
+    
+    
+}
+    lol* pop(lol*start)
+    {
+        lol*track;
+        track=start;
+        start=track->next;
+        free(track);
+        return(start);
+        
+    }
+
+
+    void print( lol*start){
+       lol*track;
+       track=start;
+        while(track!=NULL)
+        {
+            printf(" %d ",track->value);
+            track= track->next;
+            
+        }
+        }
+        
+        
+   
+        
+ 
+    
+
+
+int main(void)
+{
+    int n,i,x;
+   
+    start= NULL;
+ 
+    printf("How many nodes?\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("\nValue?\n");
+        scanf("%d",&x);
+        
+        
+        start= push(start,x);
+        print(start);
+       
+    }
+    start=pop(start);
+    printf("\n");
+    print(start);
+    start=pop(start);
+    printf("\n");
+    print(start);
+    
+    
+
+    return (0);
+}

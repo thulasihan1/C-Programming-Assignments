@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+
+
+int array[5];
+int top= -1;
+
+
+void push (int n )
+{
+  
+  
+  top= top +1;
+   array[top]= n;
+   
+    
+}
+
+void pop()
+{
+    if(top== -1)
+    {
+        printf("Stack is empty\n");
+    }
+    else
+    {
+       array[top]=NULL;
+        top=top-1;
+    }
+    
+}
+
+int main(void)
+{
+        int i;
+      push(6);
+      push(4);
+      push(3);
+      push(2);
+      push(5);
+    pop();
+    pop();
+     
+      
+      for(i=0;i<5;i++)
+      {
+          printf(" %d ", array[i]);
+      }
+      
+     
+
+    return (0);
+}

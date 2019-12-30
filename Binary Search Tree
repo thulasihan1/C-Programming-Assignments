@@ -1,0 +1,139 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+
+typedef struct Node{
+    int value;
+    struct Node*left;
+    struct Node*right;
+    
+} lol;
+
+
+lol*construct(int x)
+{
+    lol*temp= (lol*)malloc(sizeof(struct Node));
+    temp->value=x;
+    temp->left= NULL;
+    temp->right= NULL;
+    return(temp);
+    
+}
+
+lol*root;
+
+lol* Insert(lol*root,int y)
+{
+    
+    if(root==NULL)
+    {
+        root= construct(y);
+    }
+    else 
+    if(y<=root->value)
+    {
+        root->left= Insert(root->left,y);
+    }
+    else if(y>root->value)
+    {
+        root->right= Insert(root->right,y);
+    }
+
+    return(root);
+    
+}
+
+void Search(lol*root, int value)
+{
+    if(root==NULL){
+        printf("%d is not found\n",value);
+    }
+    else if(root->value==value){
+        printf("%d is found\n",value);
+    }
+    else if(value<root->value)
+    {
+      return( Search(root->left,value));
+    }
+    else if(value>root->value)
+    {
+       return( Search(root->right,value));
+    }
+}
+
+void minimum( lol*root){
+       lol*track;
+       track=root;
+        while(track->left!=NULL)
+        {
+            
+            track= track->left;
+        }
+        printf(" The min number is %d\n",track->value);
+        }
+
+void maximum( lol*root){
+       lol*track;
+       track=root;
+        while(track->right!=NULL)
+        {
+            
+            track= track->right;
+        }
+        printf(" The max number is %d\n",track->value);
+        }
+        
+        
+       int height(lol*root)
+       {
+           if(root==NULL)
+           {
+               return(-1);
+           }
+           return( (compare(height(root->left),height(root->right))) +1);
+           
+       }
+       
+       int compare(int x, int y)
+       {
+           if(x==y)
+           {
+               return(x);
+           }
+           else if(x>y)
+           {
+               return(x);
+           }
+           else if(x<y)
+           {
+               return(y);
+           }
+       }
+       
+
+        
+      
+
+int main(void)
+{
+    int length;
+    root=NULL;
+    root= Insert(root,15);
+      root= Insert(root,4);
+    root= Insert(root,21);
+    root= Insert(root,3);
+      root= Insert(root,5);
+    root= Insert(root,16);
+      root= Insert(root,33);
+    root= Insert(root,9);
+    
+  length= height(root);
+  printf("The height is %d\n",length);
+  maximum(root);
+  minimum(root);
+  Search(root,16);
+  Search(root,11);
+  
+    return (0);
+}

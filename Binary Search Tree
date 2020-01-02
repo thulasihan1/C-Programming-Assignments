@@ -10,6 +10,41 @@ typedef struct Node{
     
 } lol;
 
+typedef struct fake{ // Created a queque datastucture with type wow ;
+    int value;
+    struct fake*next;
+    
+} wow;
+
+wow *start;
+
+
+wow*enqueque(wow*start,int x){
+    wow*temp= (wow*)malloc(sizeof(struct Node));
+    temp ->value= x;
+    temp->next= NULL;
+    if(start==NULL)
+    {
+        start=temp;
+        return(start);
+    }
+    wow*track=start;
+    while(track->next!=NULL){
+        track=track->next;
+    }
+    track->next=temp;
+    return(start);
+}
+
+    wow*dequeque(start)
+    {
+        wow*track;
+        track=start;
+        start=track->next;
+        free(track);
+        return(start);
+    }
+
 
 lol*construct(int x)
 {
@@ -220,10 +255,97 @@ void maximum( lol*root){
        }
        
        
+        void levelorder(lol*root){
+       if(root==NULL)
+       {
+           printf("return");
+           return;             //LEvel order traversal this one needs help
+           
+       }
+       
+       lol*tempRoot = root;
+       
+       // enqueque the root.
+       start= enqueque(start, tempRoot->value);
+       printf(" %d ", start->value);
+       
+       // Now look through the tree to find the first value of the queque.
+       
+       while(start ->value != tempRoot-> value)
+       {
+            // Check the value of the queuque number.
+            if(start->value > tempRoot-> value)
+            {
+                // move to the right.
+                tempRoot = tempRoot ->right;
+            }
+            else
+            if(start->value < tempRoot-> value)
+            {
+                // move to the left.
+                tempRoot = tempRoot->left;
+            }
+       }
+       
+       // Now that it equals to tempRoot value.
+       // Lets queque the right and left children of this tree value, if any exist.
+       if(tempRoot->left!=NULL)
+        {
+            start= enqueque(start, tempRoot->left->value);
+        }
+        if(tempRoot->right!=NULL)
+        {
+            start= enqueque(start, tempRoot->right->value);
+        }
+        
+        // Finally dequeque a value from the queque.
+        start = dequeque(start);
        
        
        
+       while(start!=NULL)
+       {
+            // Print out the value that is to be dequeque.
+            printf(" %d ", start->value);
+            
+            // Make sure to set tempRoot to the original root value.
+            tempRoot = root;
+            
+             // Now look through the tree to find the first value of the queque.
        
+           while(start ->value != tempRoot-> value)
+           {
+                // Check the value of the queuque number.
+                if(start->value > tempRoot-> value)
+                {
+                    // move to the right.
+                    tempRoot = tempRoot ->right;
+                }
+                else
+                if(start->value < tempRoot-> value)
+                {
+                    // move to the left.
+                    tempRoot = tempRoot->left;
+                }
+           }
+           
+           // Now that it equals to tempRoot value.
+           // Lets queque the right and left children of this tree value, if any exist.
+            if(tempRoot->left!=NULL)
+            {
+                start= enqueque(start, tempRoot->left->value);
+            }
+            if(tempRoot->right!=NULL)
+            {
+                start= enqueque(start, tempRoot->right->value);
+            }
+            
+            // Finally dequeque a value from the queque.
+            start = dequeque(start);
+                
+        }
+       
+   } 
        
 
 int main(void)
@@ -253,6 +375,8 @@ int main(void)
   inorder(root);
   printf("\nPost-order:\n");
   postorder(root);
+  printf("\nlevel-order:\n");
+  levelorder(root);
   
   
   root= delete(root,9);
@@ -265,6 +389,8 @@ int main(void)
   inorder(root);
   printf("\nPost-order:\n");
   postorder(root);
+  printf("\nlevel-order:\n");
+  levelorder(root);
  
   
   

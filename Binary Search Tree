@@ -109,7 +109,8 @@ lol*delete(lol*root, int value)
         //Case 3
         else if(root->left!= NULL && root->right!= NULL)
         {
-            lol*temp = minimum(root->right);
+            lol*temp;
+            temp= min(root->right);
             root->value= temp->value;
             root->right= delete(root->right,temp->value);
         }
@@ -120,6 +121,18 @@ lol*delete(lol*root, int value)
     return(root);
     
 }
+
+int min( lol*root){
+       lol*track;
+       track=root;
+        while(track->left!=NULL)
+        {
+            
+            track= track->left;
+        }
+        return(track);
+        }
+
 
 void minimum( lol*root){
        lol*track;

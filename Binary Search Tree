@@ -170,6 +170,48 @@ void maximum( lol*root){
            }
        }
        
+       
+       void preorder(lol*root)
+       {
+           if(root==NULL)
+           {
+               return;
+           }
+           printf(" %d ",root->value);
+           preorder(root->left);
+           preorder(root->right);
+            
+       }
+       
+       void inorder(lol*root)
+       {
+           if(root==NULL)
+           {
+               return;
+           }
+            inorder(root->left);
+           printf(" %d ",root->value);
+           inorder(root->right);
+            
+       }
+       void postorder(lol*root)
+       {
+           if(root==NULL)
+           {
+               return;
+           }
+           postorder(root->left);
+           postorder(root->right);
+            printf(" %d ",root->value);
+            
+       }
+       
+       
+       
+       
+       
+       
+       
 
 int main(void)
 {
@@ -184,18 +226,32 @@ int main(void)
       root= Insert(root,33);
     root= Insert(root,9);
     
+    
+    
+   maximum(root);
+  minimum(root);  
   length= height(root);
-  printf("The height is %d\n",length);
-  maximum(root);
-  minimum(root);
+  printf("\nThe height is %d\n",length);
   Search(root,9);
   Search(root,11);
+ printf("Pre-order:\n");
+  preorder(root);
+  printf("\nIn-order:\n");
+  inorder(root);
+  printf("\nPost-order:\n");
+  postorder(root);
+  
   
   root= delete(root,9);
  length=height(root);
-   printf("The height is %d\n",length);
-
+   printf("\nThe height is %d\n",length);
   Search(root,9);
+  printf("Pre-order:\n");
+  preorder(root);
+  printf("\nIn-order:\n");
+  inorder(root);
+  printf("\nPost-order:\n");
+  postorder(root);
  
   
   

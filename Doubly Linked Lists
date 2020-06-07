@@ -1,0 +1,133 @@
+#include <stdio.h>
+#include<math.h>
+#include <stdlib.h>
+#include<string.h>
+
+typedef struct Node{
+    int value;
+    struct Node *next;
+    struct Node*prev;
+    
+    
+}lol;
+
+lol*start;
+lol* insert(int d,int x)
+{
+   
+    lol*temp= (lol*)malloc(sizeof(struct Node));
+    temp ->value= x;
+    temp ->next=NULL;
+    temp->prev = NULL;
+    lol*track;
+    track=start;
+    if(start==NULL)
+    {
+        start= temp;
+        return(start);
+    }
+    else if(start!=NULL){
+    if(d==1)
+    {
+    temp->next=start;
+    (temp->next)->prev= temp;
+    start=temp;
+    return(start);
+    }
+   int i;
+   for(i=1;i<d-1;i++)
+   {
+       track= track->next;
+   }
+   
+   if(track->next!=NULL){
+   (track->next)->prev= temp;
+   temp->next= track->next;
+    track->next= temp;
+    return(start);
+   }
+   else if(track->next==NULL){
+       track->next= temp;
+       temp->prev= track;
+       return(start);
+   }
+        
+        
+        
+    }
+                            }
+
+
+
+
+void print(start)
+{
+    lol*track;
+    track= start;
+    while(track!=NULL)
+    {
+         printf(" %d ",track->value);
+        track= track->next;
+    }
+}
+
+
+lol*delete(int d){
+    lol*track;
+    track= start;
+
+if(d==1)
+{
+    start= track->next;
+    (track->next)->prev= NULL;
+    free(track);
+    return(start);
+}
+int i;
+for(i=1;i<d-1;i++)
+{
+    track= track->next;
+}
+lol*temp;
+temp= track->next;
+track->next= (track->next)->next;
+(track->next)->prev= track;
+free(temp);
+return(start);
+    
+    
+    
+}
+
+
+
+
+
+
+
+int main(void)
+{
+    int i, size,x, choice,d;
+    start= NULL;
+    printf("\nHow many nodes?\n");
+    scanf("%d",&size);
+    for(i=0;i<size;i++)
+    {
+        printf("\nValue?\n");
+        scanf("%d",&x);
+       printf("\nChoice?\n");
+        scanf("%d",&choice);
+       start= insert(choice,x);
+       print(start);
+       
+    }
+    
+    printf("\nDelete?\n");
+    scanf("%d",&d);
+    start= delete(d);
+    print(start);
+    
+   
+    return(0);
+    
+}

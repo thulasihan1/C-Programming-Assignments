@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include<math.h>
+#include <stdlib.h>
+#include<string.h>
+#include<stdbool.h>
+
+int que[10];
+int front;
+int back;
+
+bool isfull()
+{
+    if(front==0 && back==9)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
+bool isempty()
+{
+    if(front==-1 && back==-1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void enqueque(int x)
+{
+    if((back+1)%10==front)   /*Modified */
+    {
+        printf("\nCannot add anymore\n");
+    }
+    if(isempty())
+    {
+        front= 0;
+        back= 0;
+        que[back]= x;
+    }
+    
+   else
+   {
+       back= (back+1)%10;  /*Modified  */
+       que[back]=x;
+   }
+    
+}
+
+void dequeque()
+{
+    if(isempty())
+    {
+         printf("\nNothing to delete\n");
+    }
+    if(front==back)
+    {
+        que[front]= NULL;
+        front =-1;
+        back= -1;
+    }
+    else
+    {
+        que[front]= NULL;
+        front= (front+1)%10;
+    }
+}
+
+ void print()
+ {
+     int i;
+     
+     
+     if(isempty())
+     {
+         printf("\nThere is nothing\n");
+     }
+     
+   else
+   {
+        for(i=0;i<10;i++)
+     {
+         printf(" %d ",que[i]);
+     }
+   }
+     
+     
+ }
+
+
+
+int main(void)
+{
+    front= -1;
+    back= -1;
+    
+ enqueque(1);
+ enqueque(2);
+ enqueque(3);
+ enqueque(4);
+ enqueque(5);
+ enqueque(6);
+ enqueque(7);
+ enqueque(8);
+ enqueque(9);
+ enqueque(10);
+ dequeque();
+ dequeque();
+ enqueque(11);
+ print();
+
+    
+}

@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include<math.h>
+#include<stdlib.h>
+
+
+void fib(int x, int y, int count, int t)
+{
+    int z;
+    if(count>t)
+    {
+       return;    /*Base case */
+    }
+    if(count<=t)
+    {
+        z= x+y;
+        printf(" %d ",z);
+        x=y;
+        y=z;
+        count++;
+        return(fib(x,y,count,t));
+        
+    }
+    
+    
+    
+}
+    
+
+
+
+
+int main(void)
+{
+    printf("Fib\n");
+    int x;
+    int y;
+    int count;
+    int t;
+    x=1;
+    y=1;
+    count=2;
+    scanf("%d",&t);
+   printf(" 1 1 ");
+  fib(x,y, count, t);
+    
+
+    return 0;
+}

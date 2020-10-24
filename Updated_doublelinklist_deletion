@@ -1,0 +1,45 @@
+lol*delete(lol*start, int d)
+{
+    if(start==NULL)
+    {
+        printf("\nNothing to delete\n");
+    }
+    else
+    if(start!=NULL)
+    {
+        lol*track;
+        track=start;
+        int i=1;
+if(d==1)
+{
+    start= track->next;
+    (track->next)->prev= NULL;
+    free(track);
+    return(start);
+}
+        for(i=1;i<(d-1);i++)
+        {
+            track=track->next;
+        }
+        
+        if((track->next)->next!=NULL)
+        {
+        lol*temp;
+        temp=track->next;
+        track->next= temp->next;
+        (temp->next)->prev= track;
+        free(temp);
+        return(start);
+        }
+        else if((track->next)->next==NULL)
+        {
+           lol*temp;
+           temp= track->next;
+           track->next=NULL;
+           free(temp);
+           return(start);
+        }
+      
+        
+}
+}

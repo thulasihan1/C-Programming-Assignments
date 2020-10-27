@@ -346,6 +346,20 @@ void maximum( lol*root){
         }
        
    } 
+   void Balance(){
+    int right;
+    int left;
+    right=height(start->right);
+    left= height(start->left);
+    int x;
+    x= left-right;
+    if(x==0||x==-1||x==1)
+    {
+        printf("\n BST is balanced \n");
+    }
+    else{
+        printf("\n Not balanced \n");
+    }
        
 
 int main(void)

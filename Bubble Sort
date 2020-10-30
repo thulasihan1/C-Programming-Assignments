@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main (void)
+{
+int i,j;
+int big;
+ int a[]= {2,8,5,3,9,4,1};
+ for(j=0;j<7;j++)
+ {
+     for(i=0;i<6;i++)
+     {
+         if(a[i]>a[i+1])
+         {
+             big= a[i];
+             a[i]=a[i+1];
+             a[i+1]= big;
+             
+         }
+     }
+ }
+ 
+ 
+ 
+ for(i=0;i<7;i++)
+ {
+     printf(" %d ", a[i]);
+ }
+ 
+ 
+ 
+}

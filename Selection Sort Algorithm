@@ -1,0 +1,57 @@
+#include <stdio.h>
+ int a[]= {2,8,5,3,9,4,1};
+ 
+ 
+ 
+ void swap(int j, int currentmin)
+ {
+     int x;
+     x= a[j];
+     a[j]= a[currentmin];
+     a[currentmin]=x;
+     
+ }
+int main (void)
+{
+
+int i; 
+int j; 
+int currentmin;
+int x;
+
+ for(j=0;j<6;j++)
+ {
+   currentmin= j;
+     for(i=(j+1);i<7;i++)
+     {
+        if(a[i]<a[currentmin])
+        {
+          currentmin=i;
+           
+        }
+       
+     }
+     
+     
+     if(j!=currentmin)
+     {
+       swap(j, currentmin);
+       
+         
+     }
+     
+     
+     
+     
+ }
+ 
+ 
+ 
+ for(i=0;i<7;i++)
+ {
+     printf(" %d ", a[i]);
+ }
+ 
+ 
+ 
+}
